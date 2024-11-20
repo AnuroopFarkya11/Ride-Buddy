@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ridebuddy/screen/DRIVER_FLOW/rideRequest/ride_request_screen.dart';
 
 class StartRideScreen extends StatelessWidget {
-  const StartRideScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,42 +11,46 @@ class StartRideScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              decoration: const InputDecoration(
-                labelText: 'Current Location',
-                prefixIcon: Icon(Icons.location_on),
-                border: OutlineInputBorder(),
-              ),
-              readOnly: true,
-              onTap: () {
-                // Use a location picker here if needed
-              },
+            Text(
+              'Enter your destination to start the ride.',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 20),
             TextField(
               decoration: const InputDecoration(
-                labelText: 'Destination Location',
-                prefixIcon: Icon(Icons.map),
+                labelText: 'Enter destination',
                 border: OutlineInputBorder(),
               ),
-              onTap: () {
-                // Use a Google Places API picker
-              },
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Show route or start ride
+                // Trigger the ride alert logic here
+                _triggerAlerts(context);  // Trigger alerts
+
+                // Navigate to the user request screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserRideRequestScreen(),
+                  ),
+                );
               },
-              child: const Text('Show Route'),
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
-              ),
+              child: const Text('Start Ride'),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  // Function to trigger the alerts (you can integrate with your backend here)
+  void _triggerAlerts(BuildContext context) {
+    // For now, let's just show a simple snackbar for testing
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Ride alerts sent to nearby users!')),
     );
   }
 }

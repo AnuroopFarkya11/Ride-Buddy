@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const StartRideScreen()),
+                      builder: (context) =>  StartRideScreen()),
                 );
               },
               icon: const Icon(Icons.directions_car),
