@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ridebuddy/model/user.dart';
+import 'package:ridebuddy/screen/DRIVER_FLOW/confirmation/otp_confirmation_screen.dart';
 import 'package:ridebuddy/screen/DRIVER_FLOW/rideRequest/ride_request_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -39,8 +40,17 @@ class BottomSheetContent extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      // Accept ride logic here
-                      Navigator.pop(context); // Close bottom sheet
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OTPConfirmationScreen(
+                            riderName: user.name,
+                            destination: user.destination,
+                            fair: user.fare,
+                            distance: user.distance.toDouble(),
+                          ),
+                        ),
+                      );
                     },
                     child: const Text('Accept'),
                   ),
