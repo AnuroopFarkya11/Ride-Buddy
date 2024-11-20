@@ -5,7 +5,7 @@ That's an interesting project idea! It sounds like you're aiming to build a **re
 ### Key Features
 
 1. **User Registration and Profiles**  
-   - Allow users to sign up/log in via email, phone, or social accounts.  
+   - Allow users to sign up/log in via email, phone,z or social accounts.  
    - Users should have profiles with photos, contact information, and optional reviews.
 
 2. **Source & Destination Input**  
