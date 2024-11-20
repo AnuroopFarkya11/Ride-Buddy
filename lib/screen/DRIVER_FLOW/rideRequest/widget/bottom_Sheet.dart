@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ridebuddy/model/user.dart';
 import 'package:ridebuddy/screen/DRIVER_FLOW/rideRequest/ride_request_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BottomSheetContent extends StatelessWidget {
   final User user;
@@ -29,7 +30,7 @@ class BottomSheetContent extends StatelessWidget {
             children: [
               ElevatedButton.icon(
                 onPressed: () {
-                  // Trigger call functionality here
+                  _makePhoneCall("+918305048867");
                 },
                 icon: const Icon(Icons.call),
                 label: const Text('Call'),
@@ -59,5 +60,14 @@ class BottomSheetContent extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    } else {
+      throw 'Could not launch $phoneNumber';
+    }
   }
 }
